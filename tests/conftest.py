@@ -5,7 +5,7 @@ from src.channel import Channel
 
 @pytest.fixture
 def channel_mock():
-    # Создаем мок объекта youtube
+    # Мок объекта youtube
     youtube_mock = mock.Mock()
     youtube_channels_mock = youtube_mock.channels.return_value.list.return_value
     youtube_channels_mock.execute.return_value = {
@@ -15,7 +15,7 @@ def channel_mock():
             'statistics': {'viewCount': 100, 'subscriberCount': 500}
         }]
     }
-    # Создаем экземпляр класса Channel с моком объекта youtube
+    # Экземпляр класса Channel с моком объекта youtube
     channel = Channel('channel_id')
     channel.channel = youtube_channels_mock.execute.return_value
     return channel
