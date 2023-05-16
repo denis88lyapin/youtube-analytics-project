@@ -12,6 +12,10 @@ google-api-python-client = "^2.86.0"
 isodate = "^0.6.1"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
