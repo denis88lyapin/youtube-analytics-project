@@ -10,11 +10,13 @@ packages = [{include = "youtube_analytics_project"}]
 python = "^3.10"
 google-api-python-client = "^2.86.0"
 isodate = "^0.6.1"
+pytest = "^7.3.1"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
+pytest-env = "^0.8.1"
 
 [build-system]
 requires = ["poetry-core"]
