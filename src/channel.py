@@ -20,35 +20,35 @@ class Channel:
         self.video_count = self.channel["items"][0]["statistics"]["videoCount"]
         self.view_count = self.channel["items"][0]["statistics"]["viewCount"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Метод вывода данных для пользователя"""
         return f"{self.title} ({self.url})"
 
-    def __add__(self, other):
+    def __add__(self, other) -> int:
         """Метод сложения атрибутов экземпляров класса"""
         return int(self.subscriber_count) + int(other.subscriber_count)
 
-    def __sub__(self, other):
+    def __sub__(self, other) -> int:
         """Метод вычитания атрибутов экземпляров класса"""
         return int(self.subscriber_count) - int(other.subscriber_count)
 
-    def __gt__(self, other):
+    def __gt__(self, other) -> bool:
         """Метод сравнения атрибутов экземпляров класса (>)"""
         return int(self.subscriber_count) > int(other.subscriber_count)
 
-    def __ge__(self, other):
+    def __ge__(self, other) -> bool:
         """Метод сравнения атрибутов экземпляров класса (>=)"""
         return int(self.subscriber_count) >= int(other.subscriber_count)
 
-    def __lt__(self, other):
+    def __lt__(self, other) -> bool:
         """Метод сравнения атрибутов экземпляров класса (<)"""
         return int(self.subscriber_count) < int(other.subscriber_count)
 
-    def __le__(self, other):
+    def __le__(self, other) -> bool:
         """Метод сравнения атрибутов экземпляров класса (<=)"""
         return int(self.subscriber_count) <= int(other.subscriber_count)
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         """Метод сравнения атрибутов экземпляров класса (==)"""
         return int(self.subscriber_count) == int(other.subscriber_count)
 
@@ -57,12 +57,12 @@ class Channel:
         print(json.dumps(self.channel, indent=2, ensure_ascii=False))
 
     @property
-    def channel_id(self):
+    def channel_id(self) -> str:
         """Возвращает id канала"""
         return self._channel_id
 
     @channel_id.setter
-    def channel_id(self, new_id):
+    def channel_id(self, new_id) -> None:
         raise AttributeError("property 'channel_id' of 'Channel' object has no setter")
 
     @classmethod
@@ -70,7 +70,7 @@ class Channel:
         """Возвращает объект для работы с YouTube API"""
         return cls.youtube
 
-    def to_json(self, file):
+    def to_json(self, file) -> None:
         """Сохраняет в файл значения атрибутов экземпляра `Channel` с указанием даты"""
         channel_json = {
             "id": self.channel_id,
