@@ -1,11 +1,4 @@
 import pytest
-from src.channel import Channel
-
-
-@pytest.fixture
-def channel():
-    """Создание экземпляра класса Channel для теста"""
-    return Channel('UC-OVMPlMA3-YCIeg4z5z23A')
 
 
 def test_channel_init(channel):
@@ -50,3 +43,27 @@ def test_channel_to_json(channel, tmp_path):
     channel.to_json(str(file_path))
     assert file_path.exists()
     assert file_path.read_text() != ''
+
+
+def test_str_method(channel):
+    """Проверка метода __str__"""
+    assert isinstance(str(channel), str)
+
+
+def test_add_method(channel, channel1):
+    """Проверка метода __add__"""
+    assert (channel + channel1) > int(channel.subscriber_count)
+
+
+def test_sub_method(channel, channel1):
+    """Проверка метода __sub__"""
+    assert (channel - channel1) < int(channel.subscriber_count)
+
+
+def test_comparisons_methods(channel, channel1):
+    """Проверка методов сравнения"""
+    assert (channel > channel1) is False
+    assert (channel >= channel1) is False
+    assert (channel < channel1) is True
+    assert (channel <= channel1) is True
+    assert (channel == channel1) is False
