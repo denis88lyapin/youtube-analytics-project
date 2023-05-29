@@ -3,7 +3,7 @@ import pytest
 
 def test_channel_init(channel):
     """Проверка инициализации экземпляра класса Channel"""
-    assert channel.channel_id == 'UC-OVMPlMA3-YCIeg4z5z23A'
+    assert channel._channel_id == 'UC-OVMPlMA3-YCIeg4z5z23A'
     assert channel.title is not None
     assert channel.description is not None
     assert channel.url is not None
@@ -21,13 +21,13 @@ def test_channel_print_info(channel, capsys):
 
 def test_channel_id(channel):
     """Проверка метода channel_id"""
-    assert channel.channel_id == 'UC-OVMPlMA3-YCIeg4z5z23A'
+    assert channel._channel_id == 'UC-OVMPlMA3-YCIeg4z5z23A'
 
 
 def test_channel_id_exclusion(channel):
     """Проверка метода channel_id с исключением"""
     with pytest.raises(AttributeError) as e:
-        channel.channel_id = "id"
+        channel._channel_id = "id"
     assert str(e.value) == "property 'channel_id' of 'Channel' object has no setter"
 
 

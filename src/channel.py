@@ -12,7 +12,7 @@ class Channel:
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         self._channel_id = channel_id
-        self.channel = self.youtube.channels().list(id=self._channel_id, part='snippet,statistics').execute()
+        self.channel = self.youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
         self.title = self.channel["items"][0]["snippet"]["title"]
         self.description = self.channel["items"][0]["snippet"]["description"]
         self.url = f"https://www.youtube.com/channel/{self._channel_id}"
@@ -54,7 +54,7 @@ class Channel:
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        print(json.dumps(self.channel, indent=2, ensure_ascii=False))
+        print(json.dumps(self._channel_id, indent=2, ensure_ascii=False))
 
     @property
     def channel_id(self) -> str:
@@ -73,7 +73,7 @@ class Channel:
     def to_json(self, file) -> None:
         """Сохраняет в файл значения атрибутов экземпляра `Channel` с указанием даты"""
         channel_json = {
-            "id": self.channel_id,
+            "id": self._channel_id,
             "title": self.title,
             "description": self.description,
             "url": self.url,
