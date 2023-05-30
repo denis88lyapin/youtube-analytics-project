@@ -18,4 +18,3 @@ def test_pl_video(pl_video):
     assert int(pl_video.view_count) > 50
     assert int(pl_video.like_count) > 5
     assert str(pl_video) == 'MoscowPython Meetup 78 - вступление'
-
