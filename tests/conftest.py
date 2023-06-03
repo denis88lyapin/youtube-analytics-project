@@ -1,6 +1,7 @@
 import pytest
 from src.channel import Channel
 from src.video import Video, PLVideo
+from src.playlist import PlayList
 
 
 @pytest.fixture
@@ -24,3 +25,7 @@ def video():
 @pytest.fixture
 def pl_video():
     return PLVideo('4fObz_qw9u4', 'PLv_zOGKKxVph_8g2Mqc3LMhj0M_BfasbC')
+
+@pytest.fixture
+def playlist():
+    return PlayList('PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw')
