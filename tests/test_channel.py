@@ -27,8 +27,8 @@ def test_channel_id(channel):
 def test_channel_id_exclusion(channel):
     """Проверка метода channel_id с исключением"""
     with pytest.raises(AttributeError) as e:
-        channel._channel_id = "id"
-    assert str(e.value) == "property 'channel_id' of 'Channel' object has no setter"
+        channel.channel_id = "id"
+        assert str(e.value) == "property 'channel_id' of 'Channel' object has no setter"
 
 
 def test_get_service(channel):
