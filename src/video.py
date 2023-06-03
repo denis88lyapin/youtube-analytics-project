@@ -9,12 +9,13 @@ class Video:
 
     def __init__(self, video_id: str) -> None:
         self._video_id = video_id
-        self.response = self.youtube.videos().list(part='snippet,statistics,topicDetails',
+        self.response = self.youtube.videos().list(part='snippet,statistics,contentDetails',
                                                    id=self._video_id).execute()
         self.title = self.response["items"][0]["snippet"]["title"]
-        self.url = f"https://www.youtube.com/watch?v={self._video_id}"
+        self.url = f"https://youtu.be/{self._video_id}"
         self.view_count = self.response["items"][0]["statistics"]["viewCount"]
         self.like_count = self.response["items"][0]["statistics"]["likeCount"]
+        self.duration = self.response['items'][0]['contentDetails']['duration']
 
     def __str__(self) -> str:
         return self.title
