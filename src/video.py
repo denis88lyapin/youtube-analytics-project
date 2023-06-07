@@ -1,6 +1,5 @@
 import os
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 
 
 class Video:
@@ -26,7 +25,10 @@ class Video:
             self.duration = None
 
     def __str__(self) -> str:
-        return self.title
+        if self.title:
+            return self.title
+        else:
+            return ''
 
 
 class PLVideo(Video):
