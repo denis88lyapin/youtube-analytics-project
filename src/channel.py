@@ -54,7 +54,7 @@ class Channel:
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        print(json.dumps(self._channel_id, indent=2, ensure_ascii=False))
+        print(json.dumps(self.channel, indent=2, ensure_ascii=False))
 
     @property
     def channel_id(self) -> str:
